@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.abnamro</groupId>
+  <artifactId>SpringJms</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+    <java.version>1.8</java.version>
+    <activemq.version>5.4.3</activemq.version>
+    <spring-version>3.0.5.RELEASE</spring-version>   
+  </properties>
+
+  <dependencies>
+  <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring-version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jms</artifactId>
+        <version>${spring-version}</version>
+      </dependency>
+      
+  <dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>activemq-core</artifactId>
+    <version>${activemq.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>activemq-pool</artifactId>
+    <version>${activemq.version}</version>
+</dependency>
+   
+       
+  </dependencies>
+
+  <build>
+<finalName>${project.artifactId}-${project.version}</finalName>
+	 <!-- <sourceDirectory>JavaSource</sourceDirectory>
+		<testSourceDirectory>TestSource</testSourceDirectory>
+		 <directory>dist</directory> 
+		<resources>
+			<resource>
+				<directory>JavaResources</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>TestResources</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</testResource>
+			
+		</testResources>  -->
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+				
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.10</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+						<addClasspath>true</addClasspath>
+							<mainClass>com.abnamro.Sender.Sender</mainClass>
+							<classpathPrefix>dependency-jars/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>install</goal>
+						</goals>
+					</execution>
+				</executions> 
+			</plugin>
+
+			<!-- G E N E R A T E T H E D I S T R I B U T I O N W I T H P R O F I L 
+				E S -->
+			<!-- <plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>assemble-test</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>${project.artifactId}</finalName>
+							<appendAssemblyId>true</appendAssemblyId>
+							<descriptors>
+								<descriptor>assemblies/dev.xml</descriptor>
+								<descriptor>assemblies/test.xml</descriptor>
+								<descriptor>assemblies/qa.xml</descriptor>
+								<descriptor>assemblies/prod.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> -->
+		</plugins>
+	</build>
+    
+  
+  
+</project>
+
+
+
