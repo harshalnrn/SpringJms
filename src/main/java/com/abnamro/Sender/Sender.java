@@ -31,6 +31,7 @@ public class Sender {
 		template.convertAndSend(destination,"Hello.varun");
 		template.convertAndSend(destination,"Hello.amit");
 	template.convertAndSend(destination,"Hello.vijay");
+	template.convertAndSend(destination,"Hello.vijay123");
 		
 		
 
