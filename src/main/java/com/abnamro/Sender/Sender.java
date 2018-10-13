@@ -25,7 +25,7 @@ public class Sender {
 		
 		ActiveMQDestination destination=(ActiveMQDestination)context.getBean("myAppInboundQueue");
 		
-		System.out.println("Connection acheived. Pushing Message sequentialy");
+		System.out.println("Connection acheived. Pushing Message sequentially");
 		
 		template.convertAndSend(destination,"Hello.kakka");
 		template.convertAndSend(destination,"Hello.varun");
